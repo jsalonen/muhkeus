@@ -95,6 +95,10 @@ let indexWords = (words) => {
 	});
 };
 
+let muhkeus = (mask1, mask2) => {
+	return muhkeusByCharacteristic(mask1 | mask2);	
+};
+
 let	muhkeimmat = (wordlist) => {
 	let bestPairs = [];
 	let bestMuhkeus = 0;
@@ -106,14 +110,15 @@ let	muhkeimmat = (wordlist) => {
 			for(let j = index.length - 1; j >= bestMuhkeus - i - 1; j--) {
 				if(j <= i) {
 					for(let mask2 in index[j]) {
-						let currentMuhkeus = muhkeusByCharacteristic(mask1 | mask2);
-						let currentPairs = [index[i][mask1], index[j][mask2]];
+						let currentMuhkeus = muhkeus(mask1, mask2);
 
 						if(currentMuhkeus < bestMuhkeus) {
 							continue;
 						} else if(currentMuhkeus == bestMuhkeus) {
+							let currentPairs = [index[i][mask1], index[j][mask2]];
 							bestPairs.push(currentPairs);
 						} else {
+							let currentPairs = [index[i][mask1], index[j][mask2]];
 							bestPairs = [currentPairs];
 							bestMuhkeus = currentMuhkeus;
 						}
@@ -122,6 +127,7 @@ let	muhkeimmat = (wordlist) => {
 			}			
 		}
 	}
+	console.log(iter);
 
 	return {
 		pairs: bestPairs,
