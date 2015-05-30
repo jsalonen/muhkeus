@@ -16,12 +16,6 @@ describe('uniqueLetters', () => {
 	});
 });
 
-describe('muhkeus', () => {
-	it('should count muhkeus', () => {
-		assert.equal(muhkeus.muhkeus('abc', 'bcd'), 4);
-	});
-});
-
 describe('cleanWord', () => {
 	it('removes nonvalid letters', () => {
 		let cleanWord = muhkeus.cleanWord('a~b$c%');

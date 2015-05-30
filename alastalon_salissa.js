@@ -11,7 +11,8 @@ console.log('Total word count:', words.length);
 let result = muhkeus.muhkeimmat(words);
 console.log('Best score: ', result.muhkeus);
 let pairs = [];
+
+console.log('Word pairs:');
 result.pairs.forEach((pair) => {
-	pairs.push(pair[0]+'-'+pair[1]);
+	console.dir(pair);
 });
-console.log('Word pairs: ', pairs.join(' '));
