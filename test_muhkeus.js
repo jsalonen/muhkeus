@@ -22,25 +22,27 @@ describe('muhkeus', () => {
 	});
 });
 
-describe('uniqueWords', () => {
-	it('removes duplicate words', () => {
-		let uniqueWords = muhkeus.uniqueWords(['kissa', 'koira', 'koira', 'kissa']);
+describe('cleanWord', () => {
+	it('removes nonvalid letters', () => {
+		let cleanWord = muhkeus.cleanWord('a~b$c%');
 
-		assert.equal(uniqueWords.length, 2);
+		assert.equal(cleanWord, 'abc');
 	});
+});
+describe('indexWords', () => {
+	it('indexes words by muhkeus', () => {
+		let index = muhkeus.indexWords(['kissa', 'ovi', 'ja', 'tai', 'ja', 'kåäö']);
 
-	it('removes invalid letters', () => {
-		let uniqueWords = muhkeus.uniqueWords(['kissa\n', 'kissa,', 'kissa.', 'kis-sa', 'kis_sa']);
-
-		assert.equal(uniqueWords.length, 1);
+		assert.equal(index[4]['469763072'][0], 'kåäö');
 	});
 });
 
 describe('muhkeimmat', () => {
 	it('returns muhkeimmat word pairs', () => {
 		let muhkeimmat = muhkeus.muhkeimmat(['upea', 'kapteeni', 'ruori', 'perä']);
-		assert.equal(muhkeimmat.pairs.length, 1);
-		assert.equal(_(muhkeimmat.pairs[0]).contains('ruori'), true);
-		assert.equal(_(muhkeimmat.pairs[0]).contains('kapteeni'), true);
+		let pair = [muhkeimmat.pairs[0][0][0], muhkeimmat.pairs[0][1][0]];
+
+		assert.equal(_(pair).contains('ruori'), true);
+		assert.equal(_(pair).contains('kapteeni'), true);
 	});	
 });
