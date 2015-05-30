@@ -12,7 +12,7 @@ let uniqueLetters = (word) => {
 
 let cleanWord = (word) => {
 	return _.filter(
-		word,
+		word.toLowerCase(),
 		(letter) => {
 			return _.contains(validLetters, letter);
 		}
