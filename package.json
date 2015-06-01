@@ -2,14 +2,17 @@
   "name": "muhkeus",
   "version": "1.0.0",
   "description": "",
-  "main": "index.js",
+  "main": "muhkeus.js",
   "scripts": {
-    "test": "mocha --compilers js:babel/register test_*.js",
-    "test:watch": "mocha --watch --compilers js:babel/register test_*.js"
+    "build": "babel src --out-dir lib",
+    "test": "mocha --compilers js:babel/register test/test_*.js",
+    "test:watch": "mocha --watch --compilers js:babel/register test/test_*.js"
   },
   "author": "Jaakko Salonen <jaakko.salonen@iki.fi>",
   "license": "ISC",
   "devDependencies": {
+    "chai": "^2.3.0",
+    "chai-things": "^0.2.0",
     "mocha": "^2.2.5"
   },
   "dependencies": {
